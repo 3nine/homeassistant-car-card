@@ -1,0 +1,6 @@
+type: vertical-stack
+cards:
+  - type: conditional
+    conditions:
+      - entity: binary_sensor.a3-8v-2013_connection_status
+        state_not: 'on'
