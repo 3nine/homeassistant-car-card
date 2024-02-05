@@ -4,3 +4,13 @@ cards:
     conditions:
       - entity: binary_sensor.a3-8v-2013_connection_status
         state_not: 'on'
+    card:
+      type: picture-elements
+      image: /home/homeassistant/.homeassistant/images/audi-a3-8v-2013-sideview-white.png
+      card_mod:
+        style:
+          hui-image$: |
+            img {
+              margin: auto;
+              padding: 10% 0;
+            }
