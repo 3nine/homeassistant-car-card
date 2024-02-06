@@ -1,5 +1,19 @@
 - platform: template
   sensors:
+    audi_a38v_2013_tankvolumen:
+      friendly_name: "Tankgröße"
+      unique_id: "audi_a38v_2013_tankgroesse"
+      device_class: volume
+      unit_of_measurement: L
+      value_template: >
+          {% if is_state('sensor.audi_a38v_2013_tankgroesse', 'Unknown') %}
+           {{ Unbekannt }}
+      icon_templae: >-
+        {% if is_state('sensor.audi_a38v_2013_tankgroesse', 'Unknown') %}
+          mdi:gas-station-outline
+        {% else %}
+          mdi:gas-station
+        {% endif %}
     audi_a38v_2013__charging_time_remaining:
       friendly_name: "Charging time remaining"
       unique_id: "audi_a38v_2013__custom_charging_time_remaining"
