@@ -14,7 +14,7 @@
         {% else %}
           mdi:gas-station
         {% endif %}
-    audi_a38v_2013_tankvolumen:
+    audi_a38v_2013_nachfuellbarer_tank:
       friendly_name: "Nachfüllbarer Tank"
       unique_id: "audi_a38v_2013_nachfuellbarer_tank"
       device_class: volume
