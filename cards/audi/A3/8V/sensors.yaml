@@ -1,0 +1,36 @@
+- platform: template
+  sensors:
+    audi_a3_8v_remaining_range_total:
+      friendly_name: "Restliche Reichweite"
+      unique_id: "audi_a3_8v_remaining_range_total"
+      device_class: distance
+      unit_of_measurement: km
+      value_template: >
+          {% if is_state('sensor.audi_a3_8v_remaining_range_total', 'Unknown') %}
+           {{ Unbekannt }}
+          {% else %}
+           {{ Unbekannt }}
+          {% endif %}
+      icon_template: >-
+        {% if is_state('sensor.audi_a3_8v_remaining_range_total', 'Unknown') %}
+          mdi:gas-station-outline
+        {% else %}
+          mdi:gas-station
+        {% endif %}
+    audi_a3_8v_remaining_tank_percent:
+      friendly_name: "Restlicher Tank"
+      unique_id: "audi_a3_8v_remaining_tank_percent"
+      device_class: battery
+      unit_of_measurement: percent
+      value_template: >
+          {% if is_state('sensor.audi_a3_8v_remaining_tank_percent', 'Unknown') %}
+           {{ Unbekannt }}
+          {% else %}
+           {{ Unbekannt }}
+          {% endif %}
+      icon_template: >-
+        {% if is_state('sensor.audi_a3_8v_remaining_tank_percent', 'Unknown') %}
+          mdi:gas-station-outline
+        {% else %}
+          mdi:gas-station
+        {% endif %}
