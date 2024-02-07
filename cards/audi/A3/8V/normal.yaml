@@ -6,7 +6,7 @@ cards:
         state_not: 'on'
     card:
       type: picture-elements
-      image: /local/images/bmw-i4-sideview-white.png
+      image: /local/images/audi-a3-8v-sideview-black.png
       card_mod:
         style:
           hui-image$: |
