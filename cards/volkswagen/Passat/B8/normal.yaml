@@ -1,17 +1,17 @@
 type: custom:button-card
-name: Battery
+name: Tank
 show_name: true
 show_icon: true
 show_state: true
-entity: sensor.i4_edrive40_remaining_range_total
+entity: sensor.vw_passat_b8_remaining_range_total
 state_display: |
   [[[
-    return states['sensor.i4_edrive40_remaining_battery_percent'].state+" "+states['sensor.i4_edrive40_remaining_battery_percent'].attributes.unit_of_measurement;
+    return states['sensor.vw_passat_b8_remaining_tank_percent'].state+" "+states['sensor.vw_passat_b8_remaining_tank_percent'].attributes.unit_of_measurement;
   ]]]
 custom_fields:
   range: |
     [[[
-      return states['sensor.i4_edrive40_remaining_range_total'].state+" "+states['sensor.i4_edrive40_remaining_range_total'].attributes.unit_of_measurement
+      return states['sensor.vw_passat_b8_remaining_range_total'].state+" "+states['sensor.vw_passat_b8_remaining_range_total'].attributes.unit_of_measurement
     ]]]
   progress_bar_soc: P
   progress_bar_soc_bg: P
@@ -29,7 +29,7 @@ styles:
     progress_bar_soc:
       - width: >-
           [[[return
-          "calc("+states['sensor.i4_edrive40_remaining_battery_percent'].state+"%"+"
+          "calc("+states['sensor.vw_passat_b8_remaining_tank_percent'].state+"%"+"
           - 3rem)"]]]
       - position: absolute
       - bottom: 20px
