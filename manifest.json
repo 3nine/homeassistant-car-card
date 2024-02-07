@@ -1,7 +1,7 @@
 {
   "domain": "car_card",
   "name": "Car Card",
-  "documentation": "https://github.com/yourusername/car-card",
+  "documentation": "https://github.com/hxnning/homeassistant-car-card",
   "homeassistant": "0.96.0",
   "version": "1.0.0",
   "description": "This card displays 4 entities at the top, a car image in the center, and 4 entities at the bottom.",
