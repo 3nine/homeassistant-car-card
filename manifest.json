@@ -1,0 +1,10 @@
+{
+  "domain": "your_card",
+  "name": "Your Card",
+  "documentation": "https://github.com/yourusername/your-card-repo",
+  "homeassistant": "0.96.0",
+  "version": "1.0.0",
+  "description": "Description of your card",
+  "config_flow": false,
+  "lovelace": "your-card.js"
+}
