@@ -1,52 +1,35 @@
 - platform: template
   sensors:
-    vw_passat_b8_tankvolumen:
-      friendly_name: "Tankgröße"
-      unique_id: "vw_passat_b8_tankgroesse"
-      device_class: volume
-      unit_of_measurement: L
+    vw_passat_b8_remaining_range_total:
+      friendly_name: "Restliche Reichweite"
+      unique_id: "vw_passat_b8_remaining_range_total"
+      device_class: distance
+      unit_of_measurement: km
       value_template: >
-          {% if is_state('sensor.vw_passat_b8_tankgroesse', 'Unknown') %}
+          {% if is_state('sensor.vw_passat_b8_remaining_range_total', 'Unknown') %}
            {{ Unbekannt }}
           {% else %}
            {{ Unbekannt }}
           {% endif %}
       icon_template: >-
-        {% if is_state('sensor.vw_passat_b8_tankgroesse', 'Unknown') %}
+        {% if is_state('sensor.vw_passat_b8_remaining_range_total', 'Unknown') %}
           mdi:gas-station-outline
         {% else %}
           mdi:gas-station
         {% endif %}
-    vw_passat_b8_nachfuellbarer_tank:
-      friendly_name: "Nachfüllbarer Tank"
-      unique_id: "vw_passat_b8_nachfuellbarer_tank"
-      device_class: volume
-      unit_of_measurement: L
+    vw_passat_b8_remaining_tank_percent:
+      friendly_name: "Restlicher Tank"
+      unique_id: "vw_passat_b8_remaining_tank_percent"
+      device_class: battery
+      unit_of_measurement: percent
       value_template: >
-          {% if is_state('sensor.vw_passat_b8_nachfuellbarer_tank', 'Unknown')                                                                                                                                                              %}
+          {% if is_state('sensor.vw_passat_b8_remaining_tank_percent', 'Unknown') %}
            {{ Unbekannt }}
           {% else %}
            {{ Unbekannt }}
           {% endif %}
       icon_template: >-
-        {% if is_state('sensor.vw_passat_b8_nachfuellbarer_tank', 'Unknown') %                                                                                                                                                             }
-          mdi:gas-station-outline
-        {% else %}
-          mdi:gas-station
-        {% endif %}
-    vw_passat_b8_befuellter_tank:
-      friendly_name: "Befüllter Tank"
-      unique_id: "vw_passat_b8_befuellter_tank"
-      device_class: volume
-      unit_of_measurement: L
-      value_template: >
-          {% if is_state('sensor.vw_passat_b8_befuellter_tank', 'Unknown') %}
-           {{ Unbekannt }}
-          {% else %}
-           {{ Unbekannt }}
-          {% endif %}
-      icon_template: >-
-        {% if is_state('sensor.vw_passat_b8_befuellter_tank', 'Unknown') %}
+        {% if is_state('sensor.vw_passat_b8_remaining_tank_percent', 'Unknown') %}
           mdi:gas-station-outline
         {% else %}
           mdi:gas-station
