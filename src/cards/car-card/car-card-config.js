@@ -1,4 +1,4 @@
-class CustomCard extends HTMLElement {
+class CarCard extends HTMLElement {
     set hass(hass) {
         if (!this.content) {
             const cardConfig = this._config;
@@ -32,4 +32,4 @@ class CustomCard extends HTMLElement {
     }
 }
 
-customElements.define('custom-card', CustomCard);
+customElements.define('car-card', CarCard);
