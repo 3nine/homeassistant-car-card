@@ -1,45 +1,41 @@
 class CarCard extends HTMLElement {
-  constructor() {
-    super();
-    this.attachShadow({ mode: 'open' });
-    this.entities = [];
-    this.shadowRoot.innerHTML = `
-      <style>
-        /* CSS-Styling für Ihre Karte */
-      </style>
-      <div>
-        <!-- HTML-Inhalt Ihrer Karte -->
-        <div class="top-entities">
-          ${this.renderEntities('top')}
-        </div>
-        <div class="car-image">
-          <!-- Platz für das Auto-Bild -->
-          <img src="car.png" alt="Car Image">
-        </div>
-        <div class="bottom-entities">
-          ${this.renderEntities('bottom')}
-        </div>
-      </div>
+  set hass(hass) {
+    // Initialize the content if it's not there yet.
+    if (!this.content) {
+      this.innerHTML = `
+        <ha-card header="Example-card">
+          <div class="card-content"></div>
+        </ha-card>
+      `;
+      this.content = this.querySelector("div");
+    }
+
+    const entityId = this.config.entity;
+    const state = hass.states[entityId];
+    const stateStr = state ? state.state : "unavailable";
+
+    this.content.innerHTML = `
+      The state of ${entityId} is ${stateStr}!
+      <br><br>
+      <img src="http://via.placeholder.com/350x150">
     `;
   }
 
-  renderEntities(position) {
-    return this.entities
-      .filter(entity => entity.position === position)
-      .map(entity => `<div>${entity.name}</div>`)
-      .join('');
-  }
-
+  // The user supplied configuration. Throw an exception and Home Assistant
+  // will render an error card.
   setConfig(config) {
-    if (!config.entities) {
-      throw new Error('You need to define entities');
+    if (!config.entity) {
+      throw new Error("You need to define an entity");
     }
-    this.entities = config.entities.map(entity => ({ name: entity, position: entity.position }));
+    this.config = config;
+  }
+  static getConfigElement() {
+    return document.createElement("content-card-editor");
   }
 
   getCardSize() {
-    return 8;
+    return 3;
   }
+  
 }
-
-customElements.define('car-card', CarCard);
+customElements.define('car-card', CarCard)
