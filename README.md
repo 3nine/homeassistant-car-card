@@ -1,6 +1,6 @@
 # Car Card
 
-This card displays entities at the top, a car image in the center, and entities at the bottom.
+This is a card collection for cards that displays your car and some entities.
 
 ## Installation
 
