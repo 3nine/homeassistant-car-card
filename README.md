@@ -4,34 +4,15 @@ This card displays entities at the top, a car image in the center, and entities 
 
 ## Installation
 
-1. Installieren Sie HACS, falls Sie es noch nicht installiert haben.
-2. Öffnen Sie die HACS-Registerkarte in Ihrer Home Assistant-Benutzeroberfläche.
-3. Klicken Sie auf "Integrationen" (oder eine entsprechende Kategorie).
-4. Klicken Sie auf das "+"-Symbol unten rechts.
-5. Geben Sie die URL Ihres Repositories ein (https://github.com/yourusername/car-card).
-6. Klicken Sie auf "Hinzufügen".
-7. Installieren Sie die Car Card aus der Liste der verfügbaren Integrationen.
+# HACS
+Car Card is curently not available in HACS (Home Assistant Community Store)
 
-## Verwendung
-
-Fügen Sie die Car Card wie folgt zu Ihrem Lovelace-Dashboard hinzu:
-
-```yaml
-type: 'custom:car-card'
-entities:
-  - entity: sensor.entity1
-    position: top
-  - entity: sensor.entity2
-    position: top
-  - entity: sensor.entity3
-    position: top
-  - entity: sensor.entity4
-    position: top
-  - entity: sensor.entity5
-    position: bottom
-  - entity: sensor.entity6
-    position: bottom
-  - entity: sensor.entity7
-    position: bottom
-  - entity: sensor.entity8
-    position: bottom
+# Manual
+1. Download car-card.js file from the latest release.
+2. Put car-card.js file into your config/www folder.
+3. Add reference to mushroom.js in Dashboard. There's two way to do that:
+Using UI: Settings → Dashboards → More Options icon → Resources → Add Resource → Set Url as /local/mushroom.js → Set Resource type as JavaScript Module. Note: If you do not see the Resources menu, you will need to enable Advanced Mode in your User Profile
+Using YAML: Add following code to lovelace section.
+resources:
+    - url: /local/mushroom.js
+      type: module
