@@ -19,3 +19,16 @@ Car Card is curently not available in HACS (Home Assistant Community Store)
                 - url: /local/car-card.js
                   type: module
             ```
+## Usage
+
+All the Mushroom cards can be configured using Dashboard UI editor.
+
+1. In Dashboard UI, click 3 dots in top right corner.
+2. Click _Edit Dashboard_.
+3. Click Plus button to add a new card.
+4. Find one of the _Custom: Car Card_ card in the list.
+
+### Cards
+
+Different cards are available for differents entities :
+-   🛠 [Minimum Card]()
