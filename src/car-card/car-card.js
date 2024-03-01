@@ -3,7 +3,7 @@ class CarCard extends HTMLElement {
     return document.createElement("content-card-editor");
   }
 
-  setConfig(config) {
+    setConfig(config) {
       if (!config.entities || !Array.isArray(config.entities)) {
         throw new Error('Invalid configuration: entities required');
       }
@@ -16,27 +16,27 @@ class CarCard extends HTMLElement {
       this._createCard();
     }
 
-    _createCard() {
-      const card = document.createElement('ha-card');
+  _createCard() {
+    const card = document.createElement('ha-card');
 
-      const backgroundImage = `background-image: url('${this.config.image}');`;
-      const cardStyle = `
-        height: 400px;
-        background-size: cover;
-        background-position: center;
-        ${backgroundImage}
-      `;
+    const backgroundImage = `background-image: url('${this.config.image}');`;
+    const cardStyle = `
+      height: 400px;
+      background-size: cover;
+      background-position: center;
+      ${backgroundImage}
+    `;
 
-      card.style.cssText = cardStyle;
+    card.style.cssText = cardStyle;
 
-      const entitiesTop = this._createEntityRow(this.config.entities.slice(0, 4));
-      const entitiesBottom = this._createEntityRow(this.config.entities.slice(4));
+    const entitiesTop = this._createEntityRow(this.config.entities.slice(0, 4));
+    const entitiesBottom = this._createEntityRow(this.config.entities.slice(4));
 
-      card.appendChild(entitiesTop);
-      card.appendChild(entitiesBottom);
+    card.appendChild(entitiesTop);
+    card.appendChild(entitiesBottom);
 
-      this.appendChild(card);
-    }
+    this.appendChild(card);
+  }
 
     _createEntityRow(entities) {
       const row = document.createElement('div');
