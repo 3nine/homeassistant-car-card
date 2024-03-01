@@ -1,63 +1,64 @@
-class CarCard extends HTMLElement {
-  static getConfigElement() {
-    return document.createElement("content-card-editor");
-  }
+customElements.whenDefined('hui-vertical-stack-card').then(() => {
+  class CarCard extends HTMLElement {
 
     setConfig(config) {
-      if (!config.entities || !Array.isArray(config.entities)) {
-        throw new Error('Invalid configuration: entities required');
-      }
-      
-      if (!config.image) {
-        throw new Error('Invalid configuration: image required');
+      if (!config.cards || !Array.isArray(config.cards)) {
+        throw new Error('Invalid configuration: cards required');
       }
 
       this.config = config;
       this._createCard();
     }
 
-  _createCard() {
-    const card = document.createElement('ha-card');
+    _createCard() {
+      const card = document.createElement('hui-vertical-stack-card');
 
-    const backgroundImage = `background-image: url('${this.config.image}');`;
-    const cardStyle = `
-      height: 400px;
-      background-size: cover;
-      background-position: center;
-      ${backgroundImage}
-    `;
+      this.config.cards.forEach(cardConfig => {
+        const conditionalCard = document.createElement('hui-conditional-card');
+        const conditions = cardConfig.conditions.map(condition => {
+          return {
+            entity: condition.entity,
+            state: condition.state,
+            state_not: condition.state_not
+          };
+        });
 
-    card.style.cssText = cardStyle;
+        conditionalCard.setConfig({
+          conditions: conditions,
+          card: this._createPictureElementsCard(cardConfig.card)
+        });
 
-    const entitiesTop = this._createEntityRow(this.config.entities.slice(0, 4));
-    const entitiesBottom = this._createEntityRow(this.config.entities.slice(4));
-
-    card.appendChild(entitiesTop);
-    card.appendChild(entitiesBottom);
-
-    this.appendChild(card);
-  }
-
-    _createEntityRow(entities) {
-      const row = document.createElement('div');
-      row.style.display = 'flex';
-
-      entities.forEach(entity => {
-        const entityElement = document.createElement('ha-entity');
-        entityElement.entity = entity;
-        row.appendChild(entityElement);
+        card.appendChild(conditionalCard);
       });
 
-      return row;
+      this.appendChild(card);
     }
 
-  getCardSize() {
-    return 2;
-  }
+    _createPictureElementsCard(cardConfig) {
+      const pictureElementsCard = document.createElement('hui-picture-elements-card');
 
-  set hass(hass) {
+      pictureElementsCard.setConfig({
+        image: cardConfig.image,
+        elements: cardConfig.elements.map(element => {
+          return {
+            type: element.type,
+            entity: element.entity,
+            state_color: element.state_color,
+            suffix: element.suffix,
+            icon: element.icon,
+            style: element.style
+          };
+        }),
+        card_mod: cardConfig.card_mod
+      });
+
+      return pictureElementsCard;
+    }
+
+    set hass(hass) {
       this.style.backgroundColor = 'rgba(0,0,0,0)';
+    }
   }
-}
 
-customElements.define('car-card', CarCard);
+  customElements.define('car-card', CarCard);
+});
